@@ -6,6 +6,7 @@ echo Ubuntu Java Installer
 echo
 
 # Check what options were provided
+REMOVE_OPENJDK=false
 JDK_ARCHIVE=""
 OPTS=`getopt -q -o '' -l -- "$@"`
 while true; do
@@ -24,22 +25,8 @@ if [ `id -u` -ne 0 ]; then
    exit 1
 fi
 
-
-#   Is the file containing JDK?
-#   Also obtain JDK version using the occassion
+# Obtain JDK version using the occassion
 JDK_VERSION=`tar -tf $JDK_ARCHIVE | egrep '^[^/]+/$' | head -c -2` 2>> /dev/null
-if [[ $JDK_VERSION != "jdk"* ]]; then
-   echo "FAILED"
-   echo
-   echo "The provided archive does not contain JDK: $JDK_ARCHIVE"
-   echo
-   echo "Please provide valid JDK archive from Oracle Website"
-   echo $ORACLE_DOWNLOAD_LINK
-   echo
-   exit 1
-fi
-echo "OK"
-
 
 # Begin Java installation
 
