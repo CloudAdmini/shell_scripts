@@ -6,7 +6,6 @@ echo Ubuntu Java Installer
 echo
 
 # Check what options were provided
-REMOVE_OPENJDK=false
 JDK_ARCHIVE=""
 OPTS=`getopt -q -o '' -l -- "$@"`
 while true; do
