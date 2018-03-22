@@ -64,7 +64,7 @@ if [[ "$JAVA_CHECK" == *"Java(TM) SE Runtime Environment"* ]]; then
    echo
    echo "Java is successfully installed!"
    echo
-   java -version
+   java -version 2>> java-output
    echo
    exit 0
 else
