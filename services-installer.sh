@@ -118,18 +118,18 @@ sed -i '15 a \\t\t	Order allow,deny' /etc/apache2/sites-available/000-default.co
 sed -i '16 a \\t\t	Allow from all' /etc/apache2/sites-available/000-default.conf
 sed -i '17 a \\t </Directory>' /etc/apache2/sites-available/000-default.conf
 
-#setting apache url rewrite mode
+# Setting apache url rewrite mode
 a2enmod rewrite &>> /dev/null
 echo "OK"
 
-#following command will download Drupal
+# Following command will download Drupal
 echo -n "Downloading drupal packages to /var/www/html/drupal... "
 drush -y dl --destination="/var/www/html" --drupal-project-rename="drupal" &>> /dev/null
 cp /var/www/html/drupal/sites/default/default.settings.php /var/www/html/drupal/sites/default/settings.php &>> /dev/null
 mkdir /var/www/html/drupal/sites/default/files &>> /dev/null
 echo "OK"
 
-#restart the apache server
+# Restart the apache server
 systemctl restart apache2 &>> /dev/null
 
 # Pre-install db and site
